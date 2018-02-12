@@ -19,7 +19,7 @@ int pre_increment(int *ptr)
 			//cheking from the lsb bits which bit is zero
 			if((mask & *ptr) == mask)
 				//if the bit is 1 making it as 0
-				*ptr=(*ptr & (mask1<<1));
+				*ptr=(*ptr & (mask<<1));
 			else
 			{
 				//if the any of the from lsb is 0 then make it as 1 and break the loop
@@ -46,7 +46,7 @@ int post_increment(int *ptr)
 		for(int i=0;i<sizeof(int);i++)
 		{
 			if((mask & *ptr) == mask)
-				*ptr=(*ptr & (mask1<<1));
+				*ptr=(*ptr & (mask<<1));
 			else
 			{
 				*ptr = *ptr | mask;
@@ -63,29 +63,29 @@ int main()
 	char choice;
 	do
 	{
-	int num,i,option;
-	printf("Enter the Number\n");
-	scanf("%d",&num);
-	printf("1.Pre-increment\n2.post-increment\nenter the option\n");
-	scanf("%d",&option);
-	switch (option)
-	{
-		case 1:
-			//Function call
-			i=pre_increment(&num);
-			printf("Num=%d\n",num);
-			printf("pre incremented val=%d\n",i);
-			break;
-		case 2:
-			//Function call
-			i=post_increment(&num);
-			printf("Num=%d\n",num);
-			printf("Post incremented val=%d\n",i);
-			break;
-		default:
-			printf("enter valid input\n");
-	}
-	printf("Do you wish to continue?(y/n)");
-	scanf("%c",choice);
+		int num,i,option;
+		printf("Enter the Number\n");
+		scanf("%d",&num);
+		printf("1.Pre-increment\n2.post-increment\nenter the option\n");
+		scanf("%d",&option);
+		switch (option)
+		{
+			case 1:
+				//Function call
+				i=pre_increment(&num);
+				printf("Num=%d\n",num);
+				printf("pre incremented val=%d\n",i);
+				break;
+			case 2:
+				//Function call
+				i=post_increment(&num);
+				printf("Num=%d\n",num);
+				printf("Post incremented val=%d\n",i);
+				break;
+			default:
+				printf("enter valid input\n");
+		}
+		printf("Do you wish to continue?(y/n)\n");
+		scanf(" %c",&choice);
 	}while(choice == 'y');
 }
